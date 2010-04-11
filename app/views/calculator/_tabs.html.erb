@@ -1,0 +1,6 @@
+<div id="tab-wrapper">
+  <ul id="tabs">
+    <%= render :partial => "tab", :collection => @all_tabs, :as => :tab, :locals => {:selected => @tab } %>
+  </ul>
+  <div id="clear-tabs"></div>
+</div>

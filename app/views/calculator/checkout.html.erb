@@ -1,0 +1,79 @@
+<%
+  @co2 = formatted_co2 @total_co2
+%>
+
+<script>
+  ucf.data.userCo2 = <%= @co2 %>;
+</script>
+
+<div id="jargon-buster">
+  <h1>Information</h1>
+  <%= render :partial => "calculator/info/#{@tab}" %>
+</div>
+
+<div id="main">
+
+  <p id="header">
+    <% if session[:type] == "business" %>
+      <a href="/calculator/start?type=business" <%= header_class session[:type], "business" %>>Business</a>
+    <% else %>
+      <a href="/calculator/start?type=personal" <%= header_class session[:type], "personal" %>>Personal</a>
+    <% end %>
+    <a href="/" id="home">Home</a>
+  </p>
+
+  <%= render :partial => "tabs" %>
+  
+  <div id="content" style="height: 300px;">
+
+    <% if flash[:feedback] %>
+      <p id="feedback"><%= flash[:feedback] %></p>
+    <% end %>
+    
+    <h3 class="tab-header">Checkout</h3>
+        
+    <div id="putting-it-right">
+      <h3>Your total:</h3>
+      <hr/>
+      
+      <table>
+        <tbody>
+          <tr>
+            <td><%= @co2 %>t x <%= APP_CONFIG[:currency] %><%= @price %></td>
+            <td>=</td>
+            <td><%= APP_CONFIG[:currency] %><%= number_with_precision(@total_cost, :precision => 2) %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <hr id="table-underline"/>
+      
+      <div id="invest-now">
+        <div id="amount-error" class="error"></div>
+      </div>
+      
+      <div id="submit-data">
+        
+        <% 
+          endpoint = "/calculator/donate"
+        %>
+                
+        <% form_tag(endpoint, :id => "donate-form", :target => "_top") do -%>
+          <%= hidden_field_tag "amee_profile_id", session[:profile].profile_id %>
+          <%= hidden_field_tag "tonnes_co2", @co2 %>
+          <%= hidden_field_tag "amount", number_with_precision(@total_cost, :precision => 2) %>
+          <%= submit_tag "", :id => "act-now", :value=>"OFFSET NOW"%>
+        <% end -%>        
+      </div>
+          
+    </div>
+    
+    <div id="footprint-col">
+      <%= render :partial => "footprint" %>
+    </div>
+
+    <div style="clear:both" ></div>
+
+  </div>
+
+</div>

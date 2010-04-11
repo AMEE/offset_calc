@@ -1,0 +1,31 @@
+<div id="intro-overlay" class="<%= session[:type] %>">
+  <h2>Using this calculator</h2>
+
+  <div id="intro-body">
+    <% if business_calculator? %>
+      <p id="biz-intro-copy">
+        Engage clients, employees, media and government by being part of the corporate response to climate change.
+      </p>
+    
+      <hr id="biz-intro-hr" />    
+    <% end %>
+
+    <div id="intro-workflow">
+      <a id="click-to-begin" href="/calculator/intro_viewed"><%= image_tag "click_to_begin.png" %></a>
+    </div>
+    <div id="intro-copy">
+      <p>
+        Find out
+        <% if business_calculator? %>
+          your carbon footprint as an organisation. Choose which part of your organisation's life you'd like to learn about such as energy use or freight.
+        <% else %>
+          your carbon footprint as an individual or a household. Choose which part of your life you'd like to learn about such as energy use or flights.
+        <% end %>
+      </p>
+      <p>
+        Once you've learnt more and made some changes, you can go back to the start and recalculate your footprint.
+      </p>
+    </div>
+  </div>
+
+</div>

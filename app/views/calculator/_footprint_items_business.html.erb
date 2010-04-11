@@ -1,0 +1,10 @@
+<%= render :partial => "footprint_item", 
+  :collection => @profile.flight_entries, :as => :item, :locals => {:type => "flight"} %>
+<%= render :partial => "footprint_item", 
+  :collection => @profile.car_entries, :as => :item, :locals => {:type => "car"} %>
+<%= render :partial => "footprint_item", 
+  :collection => @profile.freight_entries, :as => :item, :locals => {:type => "freight"} %>
+<%= render :partial => "footprint_item", 
+  :collection => @profile.energy_entries, :as => :item, :locals => {:type => "energy"} %>
+<%= render :partial => "footprint_item", 
+  :collection => @profile.raw_entries, :as => :item, :locals => {:type => "quick"} %>

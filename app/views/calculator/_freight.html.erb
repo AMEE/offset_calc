@@ -1,0 +1,45 @@
+<div class="tab-body">
+  
+  <% form_tag("/calculator/freight") do -%>
+    
+    <% field_set_tag "Freight", :id => "freight-inputs" do %>
+    
+      <div>
+        <p>
+          <%= select_tag "freight[transport_type]", options_for_select(Freight.types_and_keys) %>
+          <%= label_tag "freight[transport_type]", "Type" %>
+        </p>
+      </div>
+      
+      <div>
+        <p>
+          <%= text_field_tag "freight[distance]" %>
+          <%= label_tag "freight[distance]", "Distance" %>
+        </p>
+      
+        <p>
+          <%= select_tag "freight[distance_unit]", options_for_select(Freight.distance_units) %>
+          <%= label_tag "freight[distance_unit]", "Distance Unit" %>
+        </p>
+      </div>
+      
+      <div>
+        <p>
+          <%= text_field_tag "freight[mass]" %>
+          <%= label_tag "freight[mass]", "Weight" %>
+        </p>  
+      
+        <p>
+          <%= select_tag "freight[mass_unit]", 
+            options_for_select(Freight.mass_units, :selected => "t") %>
+          <%= label_tag "freight[mass_unit]", "Weight Unit" %>
+        </p>  
+      </div>
+    
+    <% end %>    
+
+    <%= submit_tag "Update footprint", :id => "update-footprint" %>
+
+  <% end -%>
+  
+</div>

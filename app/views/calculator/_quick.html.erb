@@ -1,0 +1,25 @@
+<div class="tab-body">
+    
+  <% form_tag("/calculator/quick", :id => "quick-cal") do -%>
+    
+    <p id="quick-copy">
+      Tell us your carbon footprint, if you know it already. Alternatively, look into an area of your
+      <%= business_calculator? ? "organisation" : "life" %>
+      with the calculator.
+    </p>
+    
+  <% field_set_tag "Quick Calculator" do %>
+                
+      <p>
+        I would like to offset
+        <%= text_field_tag "raw[quantity]" %>
+        <%= label_tag "raw[quantity]", "tonnes of carbon." %>
+      </p>      
+    
+    <% end %>    
+
+    <%= submit_tag "Update footprint", :id => "update-footprint" %>
+
+  <% end -%>
+  
+</div>

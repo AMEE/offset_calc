@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title><%= APP_CONFIG['title'] %></title>
+  
+  <%# <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"> <!-- Only if layout busted in IE8 --> %>
+
+  <%= stylesheet_link_tag 'main' %>
+    
+  <%= javascript_include_tag 'jquery-1.3.2.min.js', 'jquery.tools.min.js', 'main' %>
+  <script type="text/javascript">
+    $(document).ready(ucf.launch);
+    
+    var IE7_PNG_SUFFIX = ":";
+  </script>
+
+  <%#
+    Disabled as running this script causes Permission Denied errors in IE when running
+    in a cross domain iframe. Possibly due to the script creating an ActiveXObject.
+    IE7 & 8 work fine without this script. IE6 exhibits a few minor layout issues, 
+    mostly to do with padding and spacing.
+    <!--[if lt IE 9]>
+      <script src="/javascripts/IE9.js"></script>
+    <![endif]-->
+  %>
+
+  <!--[if lt IE 7]>
+    <style>
+      #content {
+        background: none;
+      }
+      #jargon-buster {
+        background: none;
+      }
+    </style>
+  <![endif]-->
+
+  <!--[if IE 6]>
+    <script src="/javascripts/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>
+      DD_belatedPNG.fix('#intro-overlay img, #main img');
+    </script>
+  <![endif]-->
+    
+  <!--[if lt IE 9]>
+    <style>
+      #intro-overlay.personal {
+        height: 395px;
+      }
+      #intro-overlay.business {
+        height: 465px;
+      }
+      h5.tab-header {
+        font-size: 90%;
+      }
+      #total-co2 {
+        margin-top: -8px;
+      }
+    </style>
+  <![endif]-->
+
+</head>
+<body>
+
+  <h1><%= APP_CONFIG[:title] %></h1>
+
+  <%= yield %>
+  
+  <div id="tooltip" style="display: none;"></div>
+    
+  <div id="amee-logo">
+    <a href="http://www.amee.com" title="AMEE">
+      <%= image_tag "http://wiki.amee.com/upload/c/ca/PoweredByAMEE_logos.png", :alt=>"Powered by AMEE" %>
+    </a>
+  </div>
+  
+</body>
+</html>

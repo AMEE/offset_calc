@@ -1,0 +1,19 @@
+<div class="footprint-item">
+
+  <% unless params[:tab] == "checkout" %>
+    <% form_tag("/calculator/delete_item") do -%>
+      <div>
+        <%= hidden_field_tag "profile_item_id", item.profile_item_id %>
+        <%= hidden_field_tag "tab", params[:tab] %>
+        <input type="image" class="clear-entry" src="/images/arrow_left_gray.png" alt="Clear entry" title="Clear entry" />
+      </div>
+    <% end %>
+  <% end %>
+  
+  <span class="num" <%= "title='#{item.desc}'" if item.desc %> >
+    <%= formatted_co2 item.co2 %>
+    <% if params[:tab] == "checkout" %><span class="tonnes">tonnes</span><% end %>
+  </span>
+  <img class="icon" src="/images/footprint_<%= type %>.png" alt="<%= item.desc %>" 
+    <%= "title='#{item.desc}'" if item.desc %> />
+</div>

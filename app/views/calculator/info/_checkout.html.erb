@@ -1,0 +1,28 @@
+<% if business_calculator? %>
+  <p>    
+  </p>
+<% else %>
+  <h4>UK average footprint per year</h4>
+
+  <div id="footprint-comp">
+  
+    <div id="flight-footprint">
+      <%= image_tag "footprint_gray.png"%>
+      <p>Per person on flights</p>
+      <p>= 0.6 tonnes</p>
+    </div>      
+  
+    <div id="ref-footprint">
+      <%= image_tag "footprint_gray.png"%>
+      <p>Per person overall</p>
+      <p>= 4.2 tonnes</p>
+    </div>
+  
+    <div id="usr-footprint">
+      <p>How you compare</p>
+      <p><%= @co2 %> tonnes</p>
+      <%= image_tag "footprint_blue.png"%>
+    </div>
+  
+  </div>
+<% end %>

@@ -1,0 +1,59 @@
+<div class="tab-body">
+  
+  <% form_tag("/calculator/car") do -%>
+  
+    <% field_set_tag "Size" do %>
+    
+      <div id="car-size-wrapper">
+        <div id="car-small" class="car-size">
+          <%= image_tag "car_small.png", :alt=>"Small car" %><br />
+          <%= radio_button_tag "car[size]", "small", true %><br />
+          <%= label_tag "car[size_small]", "Small" %>
+        </div>
+
+        <div id="car-medium" class="car-size">
+          <%= image_tag "car_medium.png", :alt=>"Medium car" %><br />
+          <%= radio_button_tag "car[size]", "medium" %><br />
+          <%= label_tag "car[size_medium]", "Medium" %>
+        </div>
+
+        <div id="car-large" class="car-size">
+          <%= image_tag "car_large.png", :alt=>"Large car" %><br />
+          <%= radio_button_tag "car[size]", "large" %><br />
+          <%= label_tag "car[size_large]", "Large" %>
+        </div>
+      </div>    
+    
+      <div id="fuel-type">
+        <label for="car_fuel_type">Fuel Type <%= image_tag "fuel_type.png", :alt=>"Fuel type" %></label>
+        <% 
+          opts = options_for_select [ 
+            ["Petrol", "petrol"], ["Diesel", "diesel"], ["Hybrid", "petrol_hybrid"], ["CNG", "cng"], ["LPG", "lpg"],       
+          ] 
+        %>
+                
+        <%= select_tag "car[fuel_type]", opts %>
+      </div>
+    
+    <% end %>    
+
+    <% field_set_tag "Usage" do %>
+    
+      <p>
+        <%= label_tag "car[distance]", "Distance" %>
+        <%= text_field_tag "car[distance]" %>
+      
+        <%= radio_button_tag "car[distance_unit]", "mi", true %>
+        <%= label_tag "car[distance_unit_mi]", "Miles" %>
+
+        <%= radio_button_tag "car[distance_unit]", "km" %>
+        <%= label_tag "car[distance_unit_km]", "Km" %>
+      </p>    
+        
+    <% end %>    
+
+    <%= submit_tag "Update footprint", :id => "update-footprint" %>
+
+  <% end -%>
+
+</div>

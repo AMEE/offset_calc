@@ -1,0 +1,16 @@
+<div id="main" style="width: 563px">
+
+  <p id="header">
+    <a href="/home" id="home">Home</a>
+  </p>
+
+  <div id="content" class="tab">
+    <h3>If you change your calculator type, you'll lose your profile information.</h3>
+
+    <p id="change-calculator">
+      <a href="/calculator/<%= session[:type] %>" class="generic">Cancel</a>
+      <a href="/calculator/<%= params[:type] %>" class="text-only">Continue</a> 
+    </p>
+  </div>
+  
+</div>

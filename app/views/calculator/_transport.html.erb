@@ -1,0 +1,59 @@
+<div id="transport-tab" class="tab-body">
+
+  <% form_tag("/calculator/transport") do -%>
+    
+    <fieldset id="bus-fieldset">
+      <legend>
+        <%= label_tag "transport_type_bus", "Bus" %>
+        <%= radio_button_tag "transport_type", "bus", true %>
+      </legend>
+      
+      <p>A typical daily commute would be 6km inner-city or 8km elsewhere.</p>
+      
+      <p>
+        <%= label_tag "bus[distance]", "Distance", :class => "aligned-label" %>
+        <%= text_field_tag "bus[distance]" %>
+        
+        <%= radio_button_tag "bus[distance_unit]", "mi", true %>
+        <%= label_tag "bus[distance_unit_mi]", "Miles" %>
+
+        <%= radio_button_tag "bus[distance_unit]", "km" %>
+        <%= label_tag "bus[distance_unit_km]", "Km" %>                
+      </p>
+
+      <p>
+        <%= label_tag "bus[journey_count]", "How many journeys?", :class => "aligned-label"  %>
+        <%= text_field_tag "bus[journey_count]" %>
+      </p>
+    </fieldset>
+    
+    <fieldset id="train-fieldset">
+      <legend>
+        <%= label_tag "transport_type_train", "Train" %>
+        <%= radio_button_tag "transport_type", "train" %>
+      </legend>
+      
+      <p>A typical daily commute would be 14 km.</p>
+      
+      <p>
+        <%= label_tag "train[distance]", "Distance", :class => "aligned-label" %>
+        <%= text_field_tag "train[distance]" %>
+
+        <%= radio_button_tag "train[distance_unit]", "mi", true %>
+        <%= label_tag "train[distance_unit_mi]", "Miles" %>
+
+        <%= radio_button_tag "train[distance_unit]", "km" %>
+        <%= label_tag "train[distance_unit_km]", "Km" %>        
+      </p>
+
+      <p>
+        <%= label_tag "train[journey_count]", "How many journeys?", :class => "aligned-label" %>
+        <%= text_field_tag "train[journey_count]" %>
+      </p>
+    </fieldset>
+
+    <%= submit_tag "Update footprint", :id => "update-footprint" %>
+
+  <% end -%>
+
+</div>

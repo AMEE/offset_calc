@@ -1,0 +1,35 @@
+<div class="tab-body">
+  
+  <% form_tag("/calculator/energy", :id => "energy-form") do -%>
+
+    <% field_set_tag "Consumption" do %>
+    
+      <table>
+        <tbody>
+          <% 
+            Energy.all.each do |e| 
+          %>
+            <tr>
+              <td><%= label_tag "#{e.key}[quantity]", e.label %></td>
+              <td><%= text_field_tag "#{e.key}[quantity]" %></td>
+              <td>
+                <%= radio_button_tag "#{e.key}[unit]", e.energy_unit, true %>
+                <%= label_tag "#{e.key}[unit_#{e.unit}]", e.energy_unit %>
+              </td>
+              <td>
+                <%= radio_button_tag "#{e.key}[unit]", "cost" %>
+                <%= label_tag "#{e.key}[unit_cost]", "cost (£)" %>
+              </td>
+            </tr>
+          <% end %>   
+                
+        </tbody>
+      </table>
+    
+    <% end %>    
+  
+    <%= submit_tag "Update footprint", :id => "update-footprint" %>
+
+  <% end -%>
+
+</div>

@@ -1,0 +1,69 @@
+<%= render :partial => "intro" if display_intro %>
+
+<%# 
+  The jargon buster should not be displayed
+   - when the intro overlay is displayed
+   - for the quick tab of the business calculator
+%>
+<% unless display_intro || (business_calculator? && (params[:tab].nil? || params[:tab] == "quick" || params[:tab] == "freight")) %>
+  <div id="jargon-buster">
+    <h1>Information</h1>
+    <%= render :partial => "calculator/info/#{@tab}" %>
+  </div>
+<% end %>
+
+<div id="main">
+
+  <p id="header">
+    <% if session[:type] == "business" %>
+      <a href="/calculator/start?type=business" <%= header_class session[:type], "business" %>>Business</a>
+    <% else %>
+      <a href="/calculator/start?type=personal" <%= header_class session[:type], "personal" %>>Personal</a>
+    <% end %>
+    <a href="/" id="home">Home</a>
+  </p>
+
+  <%= render :partial => "tabs" %>
+  
+  <div id="content">
+
+    <% if flash[:feedback] %>
+      <p id="feedback"><%= flash[:feedback] %></p>
+    <% end %>
+    
+    <%= render :partial => "calculator/tab_headers/#{@tab}"%>
+    
+    <div id="footprint-col" style="float: right;">
+      <%= render :partial => "footprint" %>
+    </div>
+    
+    <div id="<%= @tab %>" class="tab">
+      <%= render :partial => @tab %>
+    </div>
+    
+    <div style="height: 25px; clear: both;"></div>
+
+    <% @hidden_tabs.each do |tab| %>
+      
+      <!-- 
+      <div id="<%= tab %>" class="tab" style="display:none;">
+        <%#= render :partial => tab %>
+      </div>
+      -->
+      
+    <% end %>
+
+    <% if false %>
+      <div style="clear:both; color: #777; size: 90%; font-family: Monaco; font-size: 10pt">
+        <h4>Items</h4>
+        <ul>
+          <% @profile.items.each do |pi| %>
+            <li><%= h pi.inspect %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+# To be run via ./script/runner. For example, on OSX
+#
+# $ ./script/runner script/create_data_items | pbcopy
+#
+# Then paste the contents into lib/amee/data_item_cache.rb, overwriting
+# any existing method with the same name.
+#
+
+amee_cx = AMEE::Rails.connection
+amee_cx.timeout = 20_000
+puts AMEE::Methodology.create_data_item_cache amee_cx

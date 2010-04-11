@@ -1,0 +1,32 @@
+<div id="footprint">
+
+  <h3>My Footprint</h3>
+
+  <hr />
+
+  <%= render :partial => "footprint_items_#{session[:type]}" %>
+
+  <hr />
+
+  <div id="footprint-summary">
+    <div id="total-co2"><%= formatted_co2 @total_co2 %></div>
+    Total tonnes
+  </div>
+
+  <hr />
+
+  <% unless params[:tab] == "checkout" %>
+    <% form_tag("/calculator/clear", :style => "margin: 0; padding: 0;") do -%>
+      <%= hidden_field_tag "tab", params[:tab] %>
+      <%= submit_tag "Clear", :id => "clear", :title => "Clear all entries" %>
+    <% end -%>
+  <% end %>
+</div>
+
+<% unless params[:tab] == "checkout" %>
+  <div id="checkout-wrapper">
+    <a id="checkout" href="/calculator/<%= session[:type] %>?tab=checkout"
+      >Checkout</a>
+    <p id="next-tab">Go to<br />next<br />tab or...</p>
+  </div>
+<% end %>

@@ -1,0 +1,75 @@
+<div id="flight-tab" class="tab-body">
+  
+  <% form_tag("/calculator/flight") do -%>
+  
+    <fieldset>
+      <legend>
+        <%= label_tag "flight[flight_class_one_off]", "Specific flight" %>
+        <%= radio_button_tag "flight[flight_class]", "one_off", true %>
+      </legend>
+    
+      <p>
+        <% opts = options_for_select AMEE::Airports.airports, :selected => "LHR", :disabled => "---" %>
+        <%= select_tag "flight[origin]", opts %>
+        <%= label_tag "flight[origin]", "From" %>
+      </p>
+
+      <p>
+        <% opts = options_for_select AMEE::Airports.airports, :selected => "LYS", :disabled => "---" %>
+        <%= select_tag "flight[destination]", opts %>
+        <%= label_tag "flight[destination]", "To" %>
+      </p>
+
+      <div>
+        <div class="flight-type-group">
+          <%= image_tag "flight_return.png"%><br />
+          <%= radio_button_tag "flight[type]", "auto_return" %><br />
+          <%= label_tag "flight[type_auto_return]", "Return" %>
+        </div>      
+    
+        <div class="flight-type-group">
+          <%= image_tag "flight_single.png"%><br />
+          <%= radio_button_tag "flight[type]", "auto_one_way", true %><br />
+          <%= label_tag "flight[type_auto_one_way]", "Single" %>
+        </div>
+      </div>
+  
+    </fieldset>
+
+    <fieldset>
+      <legend>
+        <%= label_tag "flight[flight_class_annual]", "Multiple journeys" %>
+        <%= radio_button_tag "flight[flight_class]", "multiple" %>
+      </legend>
+  
+      <img id="flight-path" src="/images/flight_path_alpha_bg.png" />
+  
+      <div id="flight-class-wrapper">
+        <div class="flight-class">
+          <%= radio_button_tag "flight[distance]", "domestic_return", true %><br />
+          <%= label_tag "flight[distance_domestic_return]", "Domestic" %>
+        </div>
+
+        <div id="flight-class-short" class="flight-class">
+          <%= radio_button_tag "flight[distance]", "short_haul_return" %><br />
+          <%= label_tag "flight[distance_short_haul_return]", "Short haul" %>
+        </div>
+
+        <div id="flight-class-long" class="flight-class">
+          <%= radio_button_tag "flight[distance]", "long_haul_return" %><br />
+          <%= label_tag "flight[distance_long_haul_return]", "Long haul" %>
+        </div>
+      </div>    
+  
+      <p id="avg-no-flights">
+        <%= label_tag "flight[count]", "How many flights?" %>
+        <%= text_field_tag "flight[count]" %>
+      </p>
+  
+    </fieldset>
+    
+    <%= submit_tag "Update footprint", :id => "update-footprint" %>
+    
+  <% end -%>
+
+</div>
