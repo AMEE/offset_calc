@@ -6,6 +6,10 @@ test:
     title: AMEE Offset Calculator
     co2_cost: 10
     currency: £
+staging:
+    title: AMEE Offset Calculator
+    co2_cost: 10
+    currency: £
 production:
     title: AMEE Offset Calculator
     co2_cost: 10
