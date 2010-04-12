@@ -1,5 +1,4 @@
 config/amee.yml
 config/database.yml
 db/*.sqlite3
-log/*
 nbproject
