@@ -2,7 +2,7 @@ module AMEE
 
   class DataItemCache
     
-    def self.development key
+    def self.stage_amee_com key
       {
         "/transport/plane/generic/auto_one_way" => "E98F73AE9B40",
         "/transport/plane/generic/auto_return" => "601248F5F793",
@@ -75,15 +75,7 @@ module AMEE
       }[key]
     end
 
-    def self.test key
-      development key
-    end
-
-    def self.staging key
-      development key
-    end
-    
-    def self.production key
+    def self.live_amee_com key
       {
         "/transport/plane/generic/auto_one_way" => "8C676F53C182",
         "/transport/plane/generic/auto_return" => "335DF1002D48",

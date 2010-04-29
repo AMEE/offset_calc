@@ -135,8 +135,8 @@ module AMEE
     end
     
     def self.data_item_id key
-      meth_name = RAILS_ENV
-      AMEE::DataItemCache.send meth_name, key
+      server = AMEE::Rails.connection.server.gsub('.','_')
+      AMEE::DataItemCache.send server, key
     end
     
     #
@@ -147,9 +147,9 @@ module AMEE
     # create the cache for all environments.
     #
     def self.create_data_item_cache amee_cx
-      meth_name = RAILS_ENV
+      server = AMEE::Rails.connection.server.gsub('.','_')
 
-      m_def = "def self.#{meth_name} key\n  {\n"
+      m_def = "def self.#{server} key\n  {\n"
       
       categories.each do |cat|
         r = amee_cx.get "/data" / cat + "?itemsPerPage=999"
