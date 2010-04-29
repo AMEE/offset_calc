@@ -34,12 +34,15 @@
         
     <div id="putting-it-right">
       <h3>Your total:</h3>
+
+      <p>The Stern Review calculated the "social cost of carbon" to be £27.60 per tonne.</p>
+
       <hr/>
       
       <table>
         <tbody>
           <tr>
-            <td><%= @co2 %>t x <%= APP_CONFIG[:currency] %><%= @price %></td>
+            <td><%= @co2 %>t x <%= APP_CONFIG[:currency] %><%= number_with_precision(@price, :precision => 2) %></td>
             <td>=</td>
             <td><%= APP_CONFIG[:currency] %><%= number_with_precision(@total_cost, :precision => 2) %></td>
           </tr>
@@ -53,17 +56,18 @@
       </div>
       
       <div id="submit-data">
-        
-        <% 
+
+        <!-- This form would be used to send the calculated amount to a payment processor - you would customise this to your own requirements.
+        <%
           endpoint = "/calculator/donate"
         %>
-                
         <% form_tag(endpoint, :id => "donate-form", :target => "_top") do -%>
           <%= hidden_field_tag "amee_profile_id", session[:profile].profile_id %>
           <%= hidden_field_tag "tonnes_co2", @co2 %>
           <%= hidden_field_tag "amount", number_with_precision(@total_cost, :precision => 2) %>
           <%= submit_tag "", :id => "act-now", :value=>"OFFSET NOW"%>
-        <% end -%>        
+        <% end -%>
+        -->
       </div>
           
     </div>
