@@ -1,4 +1,5 @@
 config/amee.yml
 config/database.yml
+config/hoptoad.yml
 db/*.sqlite3
 nbproject

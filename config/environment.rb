@@ -21,7 +21,9 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   
   config.gem "amee", :version => '~> 2.0.28'  
-  config.gem "validatable", :version => '>= 1.6.7'  
+  config.gem "validatable", :version => '>= 1.6.7'
+
+  config.gem 'hoptoad_notifier'
 
   require 'ostruct'
 
