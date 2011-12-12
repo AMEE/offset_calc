@@ -8,7 +8,7 @@ submit the results to a carbon offsetter.
 About the Offset Calculator
 ----------------------------
 
-Version:   1.0.1
+Version:   1.1.0
 
  - Please see the RELEASE.txt file for details of releases.
 
@@ -31,9 +31,9 @@ Please see the INSTALL.txt file.
 Requirements
 ------------
 
-Rails 2.3.5
+Rails 2.3.14
 Rails-compatible database server (MySQL, PostgreSQL, SQLite, etc)
 gems:
   amee >= 2.0.35
   validatable >= 1.6.7
-  hoptoad_notifier
+  airbrake

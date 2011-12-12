@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'amee', :version => "~> 2.0.35"
   config.gem "validatable", :version => '>= 1.6.7'
 
-  config.gem 'hoptoad_notifier'
+  config.gem 'airbrake', :version => '~> 3.0.5'
 
   require 'ostruct'
 
