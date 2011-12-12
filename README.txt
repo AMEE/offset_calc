@@ -1,8 +1,8 @@
 AMEE Offset Calculator
 ----------------------
 
-A Ruby on Rails based application which uses AMEE to calculate emissions and then
-submit the results to a carbon offsetter.
+A Ruby on Rails based application which uses AMEE to calculate emissions and
+then submit the results to a carbon offsetter.
 
 
 About the Offset Calculator
@@ -12,7 +12,7 @@ Version:   1.1.0
 
  - Please see the RELEASE.txt file for details of releases.
 
-Copyright: 2010 AMEE UK Limited
+Copyright: 2010 - 2011 AMEE UK Limited
 
 License:   MIT
 
