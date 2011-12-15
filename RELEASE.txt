@@ -3,6 +3,12 @@ AMEE Offset Calculator Release History
 
 Current Version:
 
+v1.1.0
+
+- Released on: 2011-12-15
+- Upgrade to Rails 2.3.14.
+- Updated to use Airbrake gem instead of Hoptoad.
+
 v1.0.1
 
 - Released on: 2010-10-19
